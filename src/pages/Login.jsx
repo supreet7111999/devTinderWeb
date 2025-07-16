@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const Login = () => {
   
@@ -12,9 +13,15 @@ const Login = () => {
     setUserData({...userData,[name]:value});
   };
   
-  const handleSubmit=(e)=>{
+  const handleSubmit=async (e)=>{
     e.preventDefault();
     //logic
+    const res=await axios.post(
+      "http://localhost:7000/login",
+      userData,
+      {withCredentials:true}
+    );
+    console.log(res);
     console.log(userData);
   }
   return (
