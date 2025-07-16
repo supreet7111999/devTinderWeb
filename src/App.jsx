@@ -5,22 +5,26 @@ import Login from "./pages/Login"
 import Profile from "./pages/Profile"
 import Signup from "./pages/Signup"
 import Feed from "./pages/Feed"
+import { Provider } from "react-redux"
+import { store } from "./store/store"
 
 
 function App() {
 
   return (
     <>
+    <Provider store={store}>
      <BrowserRouter>
        <Routes>
         <Route path="/" element={<Main/>}>
-          <Route path="/" element={<Login/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/feed" element={<Feed/>}/>
           <Route path="/signup" element={<Signup/>} />
         </Route>
        </Routes>
      </BrowserRouter>
+     </Provider>
     </>
   )
 }
