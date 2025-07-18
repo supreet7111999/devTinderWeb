@@ -14,8 +14,9 @@ const Main = () => {
   const navigate=useNavigate();
   const fetchUser=async()=>{
     try{
-      const res=await axios.get(API_BASE_URL+"/profile/view",{ withCredentials: true });
+      const res=await axios.post(API_BASE_URL+"/profile/view",{},{ withCredentials: true });
       dispatch(addUser(res.data.data));
+      return res?.data?.data;
     }
     catch(err){
       console.log(err);
@@ -23,12 +24,19 @@ const Main = () => {
     }
   }
   
-  useEffect( ()=>{
-    if(!userData)
-    {
-      fetchUser();
+useEffect(() => {
+  const checkUser = async () => {
+    if (!userData) {
+      const data = await fetchUser();
+      if (data) {
+        navigate('/feed');
+      }
     }
-  },[]);
+  };
+
+  checkUser();
+}, []);
+
 
 
   return (
