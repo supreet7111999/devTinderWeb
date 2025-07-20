@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { Usercard } from '../components/Usercard';
-import {API_BASE_URL} from '../utils/constant'
+import React, { useEffect } from 'react';
+import { Feedcard } from '../components/Feedcard';
+import { API_BASE_URL } from '../utils/constant';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser } from '../store/FeedSlice';
 
 const Feed = () => {
-  
-  const [users,setUsers]=useState([]);
+  const dispatch = useDispatch();
+  const feed = useSelector((store) => store.feed);
 
-  const fetchUsers=async()=>{
-    const res=await axios.get(API_BASE_URL+"/feed",{withCredentials:true});
+  const fetchUsers = async () => {
+    const res = await axios.get(API_BASE_URL + "/feed", { withCredentials: true });
     console.log(res?.data?.data);
-    const usess=res?.data?.data;
-    setUsers(usess);
+    dispatch(addUser(res?.data?.data));
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  // Handle loading or no users state
+  if (!feed || feed.length === 0) {
+    return <h2 className="flex justify-center my-10">No new users found!</h2>;
   }
 
-  useEffect(()=>{
-    fetchUsers();
-  },[]);
-
-
-
+  // Render the first user in feed
   return (
     <div className='mx-auto w-1/2 my-10'>
-      <Usercard user={users[0]}/>
+      <Feedcard user={feed[0]} />
     </div>
-  )
-}
+  );
+};
 
 export default Feed;
