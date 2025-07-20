@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Connectioncard from '../components/Connectioncard';
 import axios from 'axios';
 import { API_BASE_URL } from '../utils/constant';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addConnections } from '../store/connectionSlice';
 import NoConnection from '../components/NoConnection';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const Connection = () => {
   const dispatch = useDispatch();
   const [error,setError]=useState(false);
   const [userData, setUserData] = useState([]);
-  const connection = useSelector((store) => store.connection);
+  // const connection = useSelector((store) => store.connection);
 
   const fetchConnections = async () => {
     try {
