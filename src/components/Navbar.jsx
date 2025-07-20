@@ -24,6 +24,8 @@ const Navbar = () => {
       console.log(err);
      }
   }
+
+
   return (
           <div className="navbar bg-base-100 shadow-sm">
   <div className="flex-1">
@@ -35,7 +37,7 @@ const Navbar = () => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src={!user.photoUrl&&"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"} />
+            src={user.photoUrl || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"} />
         </div>
       </div>
       <ul
