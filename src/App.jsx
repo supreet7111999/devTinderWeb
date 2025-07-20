@@ -7,6 +7,7 @@ import Signup from "./pages/Signup"
 import Feed from "./pages/Feed"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
+import Connection from "./pages/Connection"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/feed" element={<Feed/>}/>
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/connection" element={<Connection/>} />
         </Route>
        </Routes>
      </BrowserRouter>

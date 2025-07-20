@@ -49,7 +49,7 @@ const Navbar = () => {
             <span className="badge">{user.name}</span>
           </Link>
         </li>
-        <li><a>Settings</a></li>
+        <li><Link to="/connection">Connections</Link></li>
         <li><button onClick={handleClick}>Logout</button></li>
       </ul>
     </div>
