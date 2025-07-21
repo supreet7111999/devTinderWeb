@@ -25,7 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup/>} />
           <Route path="/connection" element={<Connection/>} />
           <Route path="/requests" element={<Request/>} />
-          <Route path="/requests" element={<Request/>} />
+          {/* <Route path="/requests" element={<Request/>} /> */}
           
         </Route>
        </Routes>

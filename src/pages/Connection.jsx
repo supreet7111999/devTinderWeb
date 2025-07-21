@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addConnections } from '../store/connectionSlice';
 import NoConnection from '../components/NoConnection';
 import { Link} from 'react-router-dom';
+import ConnectionFriends from '../components/ConnectionFriends';
 
 const Connection = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,10 @@ const Connection = () => {
     const checkConnections = async () => {
       const data = await fetchConnections();
       setUserData(data);
-      dispatch(addConnections(data));  // Dispatch the data after fetching
+      console.log("ds",data);
+      dispatch(addConnections(data));
+      
+      // Dispatch the data after fetching
     };
     checkConnections();
   }, []);  // Run once after component mount
@@ -45,7 +49,7 @@ return error ? (
 ) : (
   <div>
     {userData.map((user) => (
-      <Connectioncard user={user} key={user._id} />
+      <ConnectionFriends user={user} key={user._id} />
     ))}
   </div>
 );
