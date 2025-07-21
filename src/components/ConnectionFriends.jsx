@@ -24,7 +24,7 @@ const ConnectionFriends = ({ user }) => {
   }
 
   return (
-    <div className="card card-side bg-base-100 shadow-sm my-4 w-1/2 mx-auto">
+    <div className="card card-side bg-base-100 shadow-sm my-4 w-1/2 mx-auto mt-10">
       <figure>
         <img
           src={user.photoUrl || "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"}
