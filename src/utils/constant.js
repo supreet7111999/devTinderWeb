@@ -1,3 +1,3 @@
-export const API_BASE_URL=":7000";
+export const API_BASE_URL="api";
 
 
